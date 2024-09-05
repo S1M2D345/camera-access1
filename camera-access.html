@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera and Microphone Access</title>
+  <script>
+    async function startStream() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.autoplay = true;
+        document.body.appendChild(video);
+      } catch (error) {
+        console.error('Error accessing media devices.', error);
+      }
+    }
+
+    window.onload = startStream;
+  </script>
+</head>
+<body>
+  <h1>Access Your Camera and Microphone</h1>
+  <p>Your camera and microphone will be accessed automatically.</p>
+</body>
+</html>
